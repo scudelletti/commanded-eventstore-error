@@ -6,6 +6,7 @@ defmodule HelloWorld.MixProject do
       app: :hello_world,
       version: "0.1.0",
       elixir: "~> 1.10",
+      config_path: "config/config.exs",
       start_permanent: Mix.env() == :prod,
       deps: deps()
     ]
@@ -22,8 +23,9 @@ defmodule HelloWorld.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      # {:dep_from_hexpm, "~> 0.3.0"},
-      # {:dep_from_git, git: "https://github.com/elixir-lang/my_dep.git", tag: "0.1.0"}
+      {:commanded, "~> 1.2"},
+      {:jason, "~> 1.2"},
+      {:commanded_eventstore_adapter, "~> 1.2"}
     ]
   end
 end
