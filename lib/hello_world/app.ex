@@ -5,4 +5,6 @@ defmodule HelloWorld.App do
       adapter: Commanded.EventStore.Adapters.EventStore,
       event_store: HelloWorld.EventStore
     ]
+
+  router(BankRouter)
 end

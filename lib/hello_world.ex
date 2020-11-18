@@ -3,16 +3,11 @@ defmodule HelloWorld do
   Documentation for `HelloWorld`.
   """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> HelloWorld.hello()
-      :world
-
-  """
   def hello do
-    :world
+    :ok =
+      HelloWorld.App.dispatch(%OpenBankAccount{
+        account_number: "#{:rand.uniform(1_000_000)}",
+        initial_balance: 1_000
+      })
   end
 end
