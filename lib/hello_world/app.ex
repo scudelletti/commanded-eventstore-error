@@ -4,7 +4,8 @@ defmodule HelloWorld.App do
     event_store: [
       adapter: Commanded.EventStore.Adapters.EventStore,
       event_store: HelloWorld.EventStore
-    ]
+    ],
+    registry: :global
 
   router(BankRouter)
 end
