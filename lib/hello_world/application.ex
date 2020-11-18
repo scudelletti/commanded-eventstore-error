@@ -9,7 +9,7 @@ defmodule HelloWorld.Application do
     topologies = [
       example: [
         strategy: Cluster.Strategy.Epmd,
-        config: [hosts: [:"a@127.0.0.1", :"b@127.0.0.1"]]
+        config: [hosts: [:a@millenniumfalcon, :a@millenniumfalcon]]
       ]
     ]
 

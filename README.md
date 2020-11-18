@@ -5,10 +5,10 @@
 `mix do event_store.drop, event_store.create, event_store.init`
 
 #### Start Node A
-`iex --name a@127.0.0.1 -S mix`
+`iex --sname a --erl "-config sys.config" -S mix`
 
 #### Start Node B
-`iex --name b@127.0.0.1 -S mix`
+`iex --sname b --erl "-config sys.config" -S mix`
 
 #### How to trigger event that will print value on STDOUT
 `HelloWorld.hello`
