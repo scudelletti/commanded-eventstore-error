@@ -6,9 +6,15 @@ defmodule HelloWorld.Application do
   use Application
 
   def start(_type, _args) do
+    topologies = [
+      example: [
+        strategy: Cluster.Strategy.Epmd,
+        config: [hosts: [:"a@127.0.0.1", :"b@127.0.0.1"]]
+      ]
+    ]
+
     children = [
-      # Starts a worker by calling: HelloWorld.Worker.start_link(arg)
-      # {HelloWorld.Worker, arg}
+      {Cluster.Supervisor, [topologies, [name: HelloWorld.ClusterSupervisor]]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

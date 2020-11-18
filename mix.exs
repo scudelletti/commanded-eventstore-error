@@ -25,7 +25,8 @@ defmodule HelloWorld.MixProject do
     [
       {:commanded, "~> 1.2"},
       {:jason, "~> 1.2"},
-      {:commanded_eventstore_adapter, "~> 1.2"}
+      {:commanded_eventstore_adapter, "~> 1.2"},
+      {:libcluster, "~> 3.2"}
     ]
   end
 end
