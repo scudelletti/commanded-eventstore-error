@@ -14,9 +14,11 @@ defmodule HelloWorld.Application do
     ]
 
     children = [
+      {HelloWorld.Repo, []},
       {Cluster.Supervisor, [topologies, [name: HelloWorld.ClusterSupervisor]]},
       HelloWorld.App,
-      AccountBalanceHandler
+      # AccountBalanceHandler
+      ExampleProjector
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

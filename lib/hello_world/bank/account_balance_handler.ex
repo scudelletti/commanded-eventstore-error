@@ -4,20 +4,22 @@ defmodule AccountBalanceHandler do
     name: __MODULE__
 
   def init do
-    IO.inspect(label: "======================> #{__MODULE__}.init")
-
     with {:ok, _pid} <- Agent.start_link(fn -> 0 end, name: __MODULE__) do
       :ok
     end
   end
 
-  def handle(%BankAccountOpened{initial_balance: initial_balance}, _metadata) do
-    IO.inspect(label: "======================> #{__MODULE__}.handle")
-    Agent.update(__MODULE__, fn _ -> initial_balance end)
+  def handle(%BankAccountOpened{account_number: acc_number, initial_balance: balance}, _metadata) do
+    projection = %ExampleProjection{account_number: acc_number, balance: balance}
+
+    HelloWorld.Repo.insert(projection)
   end
 
-  def current_balance do
-    IO.inspect(label: "======================> #{__MODULE__}.current_balance")
-    Agent.get(__MODULE__, fn balance -> balance end)
+  def handle(%Deposited{account_number: acc_number, value: value}, _metadata) do
+    projection = HelloWorld.Repo.get_by(ExampleProjection, account_number: acc_number)
+    new_balance = projection.balance + value
+    new_projection = ExampleProjection.update_balance(projection, %{balance: new_balance})
+
+    HelloWorld.Repo.update(new_projection)
   end
 end

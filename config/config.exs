@@ -4,6 +4,15 @@
 # the umbrella root.
 use Mix.Config
 
+config :hello_world,
+  ecto_repos: [HelloWorld.Repo]
+
+config :hello_world, HelloWorld.Repo,
+  username: "postgres",
+  password: "postgres",
+  database: "eventstore_readstore_dev",
+  hostname: "localhost"
+
 config :hello_world, event_stores: [HelloWorld.EventStore]
 
 config :hello_world, HelloWorld.EventStore,

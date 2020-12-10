@@ -26,7 +26,12 @@ defmodule HelloWorld.MixProject do
       {:commanded, "~> 1.2"},
       {:jason, "~> 1.2"},
       {:commanded_eventstore_adapter, "~> 1.2"},
-      {:libcluster, "~> 3.2"}
+      {:libcluster, "~> 3.2"},
+      {:commanded_ecto_projections, "~> 1.2"},
+
+      # Ecto
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"}
     ]
   end
 end
